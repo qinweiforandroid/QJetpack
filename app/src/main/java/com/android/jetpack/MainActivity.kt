@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         App.init(application, MainActivity::class.java)
         val cs = ArrayList<QFragmentActivity.Clazz>()
         cs.add(QFragmentActivity.Clazz("WorkManager", WorkManagerFragment::class.java))
-        SupportFragmentListActivity.startActivity(this, cs)
+        SupportFragmentListActivity.startActivity(this, cs, false)
         finish()
     }
 }
