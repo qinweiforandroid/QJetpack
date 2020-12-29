@@ -2,9 +2,13 @@ package com.qw.jetpack.workmanger;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +34,15 @@ import java.util.concurrent.atomic.AtomicInteger;
  * email: qinwei_it@163.com
  */
 public class WorkManagerFragment extends BaseFragment implements View.OnClickListener {
+    private TextView mWorkMessageLabel;
+    private Handler mHandler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            mWorkMessageLabel.append("\n" + msg.obj.toString());
+        }
+    };
+
     @Nullable
     @Override
     protected View getCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,6 +56,7 @@ public class WorkManagerFragment extends BaseFragment implements View.OnClickLis
         view.findViewById(R.id.mWorkSingleInitialDelaysBtn).setOnClickListener(this);
         view.findViewById(R.id.mWorkSingleDataBtn).setOnClickListener(this);
         view.findViewById(R.id.mWorkPeriodicBtn).setOnClickListener(this);
+        mWorkMessageLabel = (TextView) view.findViewById(R.id.mWorkMessageLabel);
     }
 
     @Override
@@ -115,7 +129,7 @@ public class WorkManagerFragment extends BaseFragment implements View.OnClickLis
     private void constraints() {
         Constraints constraints = new Constraints.Builder()
                 //设备空闲
-                .setRequiresDeviceIdle(true)
+//                .setRequiresDeviceIdle(true)
                 //设备充电
                 .setRequiresCharging(true)
                 .build();
@@ -129,6 +143,8 @@ public class WorkManagerFragment extends BaseFragment implements View.OnClickLis
     private void simpleWork() {
         OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(SimpleWork.class)
                 .build();
+        mWorkMessageLabel.setText("");
+        mWorkMessageLabel.append("time:" + System.currentTimeMillis() + " 执行单次任务，立即执行");
         WorkManager.getInstance(getContext()).enqueue(workRequest);
     }
 
@@ -138,13 +154,17 @@ public class WorkManagerFragment extends BaseFragment implements View.OnClickLis
             super(context, workerParams);
         }
 
+
         @NonNull
         @Override
         public Result doWork() {
-            Trace.d("doWork executed " + Thread.currentThread().getId());
-//            Toast.makeText(MyApplication.getInstance(), "doWork executed", Toast.LENGTH_SHORT).show();
+            final Message message = Message.obtain();
+            message.obj = "time:" + System.currentTimeMillis() + " doWork executed " + Thread.currentThread().getId();
+            Trace.d(message.obj.toString());
+//            mHandler.sendMessage(message);
             return Result.success();
         }
+
     }
 
     public static class DataWork extends Worker {

@@ -5,10 +5,16 @@
     android:orientation="vertical"
     android:padding="@dimen/key_line_4">
 
+    <TextView
+        android:id="@+id/mWorkMessageLabel"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
     <Button
         android:id="@+id/mWorkSingleBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/key_line_4"
         android:text="执行单次任务" />
 
     <Button

@@ -12,9 +12,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_main)
-        AppStateTracker.init(application)
-        AppStateTracker.getInstance().appState = AppStateTracker.APP_STATE_ONLINE
-        App.init(application, MainActivity::class.java)
         val cs = ArrayList<QFragmentActivity.Clazz>()
         cs.add(QFragmentActivity.Clazz("WorkManager", WorkManagerFragment::class.java))
         SupportFragmentListActivity.startActivity(this, cs, false)
