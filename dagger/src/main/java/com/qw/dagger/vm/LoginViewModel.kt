@@ -1,6 +1,6 @@
-package com.android.jetpack.vm
+package com.qw.dagger.vm
 
-import com.android.jetpack.repository.UserRepository
+import com.qw.dagger.repository.UserRepository
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(private val repository: UserRepository) {

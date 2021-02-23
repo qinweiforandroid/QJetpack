@@ -1,4 +1,4 @@
-package com.android.jetpack.repository.local
+package com.qw.dagger.repository.local
 
 import javax.inject.Inject
 

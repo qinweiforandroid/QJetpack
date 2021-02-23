@@ -1,4 +1,4 @@
-package com.android.jetpack.repository.remote
+package com.qw.dagger.repository.remote
 
 import com.qw.utils.Trace
 import javax.inject.Inject

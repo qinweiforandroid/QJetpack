@@ -1,3 +1,4 @@
+include ':dagger'
 include ':jetpack'
 include ':app'
 rootProject.name = "QJetpack"

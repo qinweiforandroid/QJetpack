@@ -2,6 +2,7 @@ package com.android.jetpack
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.qw.dagger.LoginFragment
 import com.qw.framework.App
 import com.qw.framework.AppStateTracker
 import com.qw.framework.ui.QFragmentActivity
@@ -13,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_main)
         val cs = ArrayList<QFragmentActivity.Clazz>()
+        cs.add(QFragmentActivity.Clazz("Dagger", LoginFragment::class.java))
         cs.add(QFragmentActivity.Clazz("WorkManager", WorkManagerFragment::class.java))
         SupportFragmentListActivity.startActivity(this, cs, false)
         finish()

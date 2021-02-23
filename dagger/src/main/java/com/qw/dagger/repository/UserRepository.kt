@@ -1,7 +1,7 @@
-package com.android.jetpack.repository
+package com.qw.dagger.repository
 
-import com.android.jetpack.repository.local.UserLocalDataSource
-import com.android.jetpack.repository.remote.UserRemoteDataSource
+import com.qw.dagger.repository.local.UserLocalDataSource
+import com.qw.dagger.repository.remote.UserRemoteDataSource
 import com.qw.utils.Trace
 import javax.inject.Inject
 

@@ -1,7 +1,6 @@
 package com.android.jetpack
 
 import android.app.Application
-import com.android.jetpack.dagger.DaggerApplicationComponent
 import com.qw.framework.App
 import com.qw.framework.AppStateTracker
 
@@ -11,10 +10,9 @@ import com.qw.framework.AppStateTracker
  * email: qinwei_it@163.com
  */
 class App : Application() {
-    val appComponent = DaggerApplicationComponent.create()
     override fun onCreate() {
         super.onCreate()
-        App.init(this, LoginActivity::class.java)
+        App.init(this, MainActivity::class.java)
         AppStateTracker.getInstance().appState = AppStateTracker.APP_STATE_ONLINE
     }
 }
