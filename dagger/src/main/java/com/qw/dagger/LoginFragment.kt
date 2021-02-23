@@ -25,7 +25,7 @@ class LoginFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = LoginActivityBinding.inflate(layoutInflater,container,false)
+        binding = LoginActivityBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -34,8 +34,12 @@ class LoginFragment : BaseFragment() {
             login(binding.mLoginNameLabel.text.toString(), binding.mLoginPwdLabel.text.toString())
         }
     }
+
     override fun initData() {
-        DaggerApplicationComponent.create().inject(this)
+        DaggerApplicationComponent.create()
+            .loginComponent()
+            .create()
+            .inject(this)
     }
 
     private fun login(name: String, pwd: String) {

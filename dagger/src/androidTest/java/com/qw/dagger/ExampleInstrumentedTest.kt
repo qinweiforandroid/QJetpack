@@ -1,13 +1,11 @@
 package com.qw.dagger
 
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.qw.dagger.dagger.DaggerApplicationComponent
-
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -24,6 +22,13 @@ class ExampleInstrumentedTest {
     }
 
     @Test
+    fun component() {
+        val dagger1 = DaggerApplicationComponent.create()
+        val dagger2 = DaggerApplicationComponent.create()
+        assert(dagger1 == dagger2)
+    }
+
+    @Test
     fun instance() {
         val daggerApplicationComponent = DaggerApplicationComponent.create()
         val login1VM = daggerApplicationComponent.loginVM()
@@ -36,6 +41,15 @@ class ExampleInstrumentedTest {
         val component = DaggerApplicationComponent.create()
         val user1VM = component.userVM()
         val user2VM = component.userVM()
-        assert(user1VM==user2VM)
+        assert(user1VM == user2VM)
+    }
+
+
+    @Test
+    fun providesObj() {
+        val daggerApplicationComponent = DaggerApplicationComponent.create()
+        val login1VM = daggerApplicationComponent.loginVM()
+        val result = login1VM.login("qinwei", "123456")
+        assert(result)
     }
 }

@@ -1,5 +1,6 @@
 package com.qw.dagger.repository.remote
 
+import com.qw.dagger.repository.remote.api.LoginAPI
 import com.qw.utils.Trace
 import javax.inject.Inject
 
@@ -8,7 +9,10 @@ import javax.inject.Inject
  * email: qinwei_it@163.com
  */
 class UserRemoteDataSource @Inject constructor() {
-    fun login(name: String, pwd: String) {
+    @Inject
+    lateinit var loginAPI: LoginAPI
+    fun login(name: String, pwd: String): Boolean {
         Trace.d("UserRemoteDataSource:login name:$name pwd:$pwd")
+        return loginAPI.login(name, pwd)
     }
 }

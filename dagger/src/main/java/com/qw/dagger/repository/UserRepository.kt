@@ -13,9 +13,9 @@ class UserRepository @Inject constructor(
     private val localDataSource: UserLocalDataSource,
     private val remoteDataSource: UserRemoteDataSource
 ) {
-    fun login(name: String, pwd: String) {
+    fun login(name: String, pwd: String): Boolean {
         Trace.d("UserRepository:login name:$name pwd:$pwd")
-        remoteDataSource.login(name, pwd)
+        return remoteDataSource.login(name, pwd)
     }
 
 }
