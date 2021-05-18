@@ -41,6 +41,6 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    api 'com.qw.core:framework:1.0.0-alpha9'
-    api 'com.qw.core:utils:0.9.9'
+    api 'com.qw.framework:extend:0.0.1-alpha'
+    api 'io.github.qinweiforandroid:utils:0.0.1-alpha'
 }

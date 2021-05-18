@@ -22,7 +22,7 @@ import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
-import com.qw.framework.ui.BaseFragment;
+import com.qw.framework.core.ui.BaseFragment;
 import com.qw.jetpack.R;
 import com.qw.utils.Trace;
 

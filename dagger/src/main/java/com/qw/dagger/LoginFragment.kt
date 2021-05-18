@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.qw.dagger.dagger.DaggerApplicationComponent
 import com.qw.dagger.databinding.LoginActivityBinding
 import com.qw.dagger.vm.LoginViewModel
-import com.qw.framework.ui.BaseFragment
+import com.qw.framework.core.ui.BaseFragment
 import javax.inject.Inject
 
 /**
