@@ -1,10 +1,8 @@
 package com.android.jetpack
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.qw.dagger.LoginFragment
-import com.qw.framework.App
-import com.qw.framework.AppStateTracker
 import com.qw.framework.ui.QFragmentActivity
 import com.qw.framework.ui.SupportFragmentListActivity
 import com.qw.jetpack.workmanger.WorkManagerFragment
