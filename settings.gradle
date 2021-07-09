@@ -1,3 +1,4 @@
 include ':dagger'
 include ':workmanager'
 rootProject.name = "QJetpack"
+include ':databinding'
