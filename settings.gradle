@@ -3,3 +3,4 @@ include ':workmanager'
 rootProject.name = "QJetpack"
 include ':databinding'
 include ':livedata'
+include ':kotlin'
