@@ -4,3 +4,4 @@ rootProject.name = "QJetpack"
 include ':databinding'
 include ':livedata'
 include ':kotlin'
+include ':coroutines'
