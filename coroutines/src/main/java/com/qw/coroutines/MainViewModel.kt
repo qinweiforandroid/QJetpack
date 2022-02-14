@@ -33,14 +33,10 @@ class MainViewModel : ViewModel() {
     suspend fun <T> request(call: suspend CoroutineScope.() -> T): ResponseResult<T> {
         var response: ResponseResult<T>
         withContext(Dispatchers.IO) {
-            try {
-                response = ResponseResult.success(call())
+            response = try {
+                ResponseResult.success(call())
             } catch (e: Exception) {
-                response = ResponseResult.fail(e)
-                if (response.httpCode == 401) {
-                    // TODO: 2022/1/5 跳转登录
-                    cancel()
-                }
+                ResponseResult.fail(e)
             }
         }
         return response
