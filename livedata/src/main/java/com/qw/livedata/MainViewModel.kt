@@ -17,10 +17,10 @@ class MainViewModel : ViewModel() {
 
     private val userIdLivedata = MutableLiveData<Int>()
 
-    val userLiveData: MutableLiveData<User> =
+    val userLiveData: LiveData<User> =
         Transformations.switchMap(userIdLivedata) { input ->
             loadUser(input)
-        } as MutableLiveData<User>
+        }
 
     fun queryUser(userId: Int) {
         userIdLivedata.value = userId
@@ -46,11 +46,13 @@ class MainViewModel : ViewModel() {
     fun loadUser2(userId: Int) {
         val dbSource = loadUserFromDb(userId)
         userMediatorLiveData.addSource(dbSource, Observer {
+            userMediatorLiveData.removeSource(dbSource)
             if (it.id == 100) {
                 userMediatorLiveData.value = it
             } else {
                 val serverSource = loadUserFromServer(userId)
                 userMediatorLiveData.addSource(serverSource, Observer { user ->
+                    userMediatorLiveData.removeSource(serverSource)
                     userMediatorLiveData.value = user
                 })
             }
