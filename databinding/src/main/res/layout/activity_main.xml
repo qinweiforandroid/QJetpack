@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
-            name="user"
-            type="com.qw.databinding.User" />
+            name="praise"
+            type="com.qw.databinding.PraiseVO" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,26 +16,28 @@
         android:padding="16dp"
         tools:context=".MainActivity">
 
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{user.name}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
+
+        <com.qw.databinding.LottieStateView
+            android:id="@+id/mLottieStateView"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="张三" />
+            app:lottieStateSelected="@{praise.isPraised}"
+            app:switchLottieStateSelected="@{praise.action}" />
 
         <TextView
-            android:id="@+id/tv_age"
+            android:id="@+id/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@{String.valueOf(user.age)}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name"
-            tools:text="25" />
+            android:text="@{String.valueOf(praise.num)}"
+            app:layout_constraintBottom_toBottomOf="@+id/mLottieStateView"
+            app:layout_constraintEnd_toEndOf="@+id/mLottieStateView"
+            app:layout_constraintStart_toStartOf="@+id/mLottieStateView"
+            app:layout_constraintTop_toBottomOf="@+id/mLottieStateView"
+            tools:text="1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
